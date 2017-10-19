@@ -1,0 +1,33 @@
+<?php
+$db_connection = mysqli_connect("127.0.0.1", "sitemaster", "password");
+mysqli_select_db($db_connection, "comments");
+
+$find_comments = mysqli_query($db_connection, "SELECT * FROM comments");
+while($row = mysqli_fetch_assoc($find_comments))
+{
+	$list_name = $row['comment_name'];
+	$list_msg = $row['comment_msg'];
+	
+	echo "<b>$list_name</b> <i>said:</i><br><br>";
+	echo "$list_name";
+		
+} 
+?>
+
+
+
+
+
+<?php
+$comment_error = "twitter"
+switch($comment_error){
+    case "twitter":
+        echo "PLS. STAHP. 140 Characters or less";
+        break;
+    case "name":
+        echo "Come on, don't use the sample name";
+        break;
+    default:
+       echo "Go ahead, spin";
+}
+?>
