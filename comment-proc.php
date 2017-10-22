@@ -22,11 +22,17 @@ catch(PDOException $e)
 $comment_name = $_POST["comment_name"];
 $comment_msg = $_POST["comment_msg"];
 
+$name_length = strlen($comment_name);
 $comment_length = strlen($comment_msg);
+
 
 if($comment_length > 140)
 {
 	header("location: index.php?comment_error=twitter");
+}
+elseif($name_length==0 or $comment_length==0)
+{
+	header("location: index.php?comment_error=empty");
 }
 else
 {
@@ -45,8 +51,9 @@ else
     echo "Connection failed: " . $e->getMessage();
     }
 	// mysqli_query($db_connection,"INSERT INTO comments VALUES( '','$comment_name','$comment_msg' )");
-	// header("location: index.php");
-	echo "Hello $comment_name <br>";
-	echo "Your comment shwasz: $comment_msg <br> ";
+	header("location: index.php?comment_error=none");
+	// echo "Hello $comment_name <br>";
+	// echo "Your comment shwasz: $comment_msg <br> ";
+	
 }
 ?>
